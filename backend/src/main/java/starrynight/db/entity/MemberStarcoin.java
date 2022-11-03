@@ -1,5 +1,7 @@
 package starrynight.db.entity;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.DynamicUpdate;
 import starrynight.enums.Check;
 
@@ -7,6 +9,8 @@ import javax.persistence.*;
 
 @DynamicUpdate
 @Entity
+@Getter
+@Setter
 @Table(
         name = "member_starcoin"
 )

@@ -7,29 +7,29 @@ import org.hibernate.annotations.DynamicUpdate;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+
 @DynamicUpdate
 @Entity
 @Getter
 @Setter
 @Table(
-        name = "starcoin"
+        name = "furniture"
 )
-public class Starcoin {
+public class Furniture {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name ="starcoin_id")
-    private Long id;    //식별자
-
-    @Column(name ="num")
-    private Long num;   //코인 번호
+    @Column(name ="furniture_id")
+    private Long id;        //식별자
+    private String name;    //가구명
+    private int price;      //가격
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "story_id")
-    private Story story;
+    @JoinColumn(name = "furniture_category_id")
+    private FurnitureCategory furnitureCategory;
 
     @OneToMany(
-            mappedBy = "starcoin",
+            mappedBy = "furniture",
             cascade = {CascadeType.ALL}
     )
-    private List<MemberStarcoin> memberStarcoins = new ArrayList();
+    private List<MemberFurniture> memberFurnitures = new ArrayList();
 }

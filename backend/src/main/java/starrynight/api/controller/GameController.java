@@ -29,12 +29,7 @@ public class GameController {
     @GetMapping({"/starcoin/{address}"})
     public ResponseEntity<StarcoinCountResponse> findStarcoinCount(@ApiParam(value = "아이디 주소",required = true, example = "0x1234") @PathVariable String address) {
         StarcoinCountResponse starcoinCountResponse = new StarcoinCountResponse();
-//        [ERROR] 처리여부 확인. 존재하는 아이디인지?
-//        if (!this.authService.isMember(address)) {
-//            throw new CustomException(CustomExceptionList.MEMBER_NOT_FOUND);
-//        } else {
-            starcoinCountResponse.count = this.gameService.getStarcoinCount(address);
-            return new ResponseEntity(starcoinCountResponse, HttpStatus.OK);
-//        }
+        starcoinCountResponse.count = this.gameService.getStarcoinCount(address);
+        return new ResponseEntity(starcoinCountResponse, HttpStatus.OK);
     }
 }

@@ -1,5 +1,7 @@
 package starrynight.db.entity;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
@@ -9,6 +11,8 @@ import java.util.List;
 
 @DynamicUpdate
 @Entity
+@Getter
+@Setter
 @Table(
         name = "member"
 )
@@ -36,7 +40,15 @@ public class Member {
     )
     private List<MemberStory> memberStories = new ArrayList();
 
-    public Long getStarcoinCount(){
-        return this.starcoin_count;
-    }
+    @OneToMany(
+            mappedBy = "member",
+            cascade = {CascadeType.ALL}
+    )
+    private List<MemberFurniture> memberFurnitures = new ArrayList();
+
+
+    @OneToOne(mappedBy = "member", fetch = FetchType.LAZY)
+    private MemberRoom memberRoom;
+
+
 }
