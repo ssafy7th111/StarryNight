@@ -1,11 +1,11 @@
 package starrynight.db.entity;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.DynamicUpdate;
 import starrynight.enums.Check;
 
 import javax.persistence.*;
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @DynamicUpdate
 @Entity
 @Getter
@@ -20,9 +20,8 @@ public class MemberStory {
     @Column(name ="member_story_id")
     private Long id;    //식별자
 
-    @Enumerated(EnumType.STRING)
     @Column(name ="isClear")
-    private Check isClear;
+    private boolean isClear;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
@@ -31,4 +30,11 @@ public class MemberStory {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "story_id")
     private Story story;
+
+    @Builder
+    public MemberStory(Member member, Story story){
+        this.member = member;
+        this.story = story;
+        isClear = false;
+    }
 }

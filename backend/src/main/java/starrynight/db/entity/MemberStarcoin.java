@@ -1,12 +1,14 @@
 package starrynight.db.entity;
 
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.DynamicUpdate;
 import starrynight.enums.Check;
 
 import javax.persistence.*;
-
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @DynamicUpdate
 @Entity
 @Getter
@@ -28,7 +30,12 @@ public class MemberStarcoin {
     @JoinColumn(name = "member_id")
     private Member member;
 
-    @Enumerated(EnumType.STRING)
     @Column(name ="isTaken")
-    private Check isTaken;
+    private boolean isTaken;
+
+    public MemberStarcoin(Member member, Starcoin starcoin){
+        this.member = member;
+        this.starcoin = starcoin;
+        this.isTaken = false;
+    }
 }

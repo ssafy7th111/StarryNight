@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import starrynight.api.dto.game.StarcoinCountResponse;
+import starrynight.api.dto.game.StoryListResponse;
 import starrynight.api.service.GameService;
 
 @RestController
@@ -23,13 +24,25 @@ public class GameController {
     }
 
     @ApiOperation(
-            value = "API 테스트",
-            notes = "API 테스트를 진행합니다."
+            value = "스타코인 개수 조회",
+            notes = "현재 보유중인 스타코인의 개수를 조회한다."
     )
-    @GetMapping({"/starcoin/{address}"})
-    public ResponseEntity<StarcoinCountResponse> findStarcoinCount(@ApiParam(value = "아이디 주소",required = true, example = "0x1234") @PathVariable String address) {
+    @GetMapping({"/starcoin/id/{id}"})
+    public ResponseEntity<StarcoinCountResponse> findStarcoinCount(@ApiParam(value = "회원아이디PK번호",required = true, example = "1") @PathVariable Long id) {
         StarcoinCountResponse starcoinCountResponse = new StarcoinCountResponse();
-        starcoinCountResponse.count = this.gameService.getStarcoinCount(address);
+        starcoinCountResponse.count = this.gameService.getStarcoinCount(id);
         return new ResponseEntity(starcoinCountResponse, HttpStatus.OK);
+    }
+
+    @ApiOperation(
+            value = "스토리 목록 받기",
+            notes = "회원의 스토리 목록을 받는다."
+    )
+    @GetMapping({"/storylist/id/{id}"})
+    public ResponseEntity<StoryListResponse> findStorylist(@ApiParam(value = "회원아이디PK번호", required = true, example = "1") @PathVariable Long id){
+        StoryListResponse storyListResponse = new StoryListResponse();
+        gameService.setInitialGameInfor(id);
+        storyListResponse.stories = gameService.getStoryList(id);
+        return new ResponseEntity(storyListResponse, HttpStatus.OK);
     }
 }
