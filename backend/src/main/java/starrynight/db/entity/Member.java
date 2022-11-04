@@ -53,5 +53,10 @@ public class Member {
     @OneToOne(mappedBy = "member", fetch = FetchType.LAZY)
     private MemberRoom memberRoom;
 
+    //임시로 사용(카카오 로그인 만들어지면 삭제할 것)
+    public Member(String nickname){
+        this.nickname = nickname;
+        this.starcoin_count = (long) 0;
+    }
 
 }

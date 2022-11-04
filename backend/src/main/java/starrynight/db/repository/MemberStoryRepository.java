@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface MemberStoryRepository extends JpaRepository<MemberStory, Long> {
     List<MemberStory> findAllByMemberId(Long memberId);
+    MemberStory findByMemberIdAndStoryId(Long memberId, Long storyId);
 }

@@ -9,4 +9,5 @@ import java.util.List;
 public interface StarcoinRepository extends JpaRepository<Starcoin, Long> {
 //    int countByStoryId(Story story);
     List<Starcoin> findAllByStoryId(Long storyId);
+    Starcoin findByStoryIdAndNum(Long storyId, Long num);
 }

@@ -2,6 +2,7 @@ package starrynight.api.service;
 
 import org.springframework.stereotype.Service;
 import starrynight.api.dto.game.StarcoinCountResponse;
+import starrynight.api.dto.game.StarcoinListData;
 import starrynight.api.dto.game.StoryListData;
 import starrynight.db.entity.*;
 import starrynight.db.repository.*;
@@ -37,26 +38,38 @@ public class GameService {
         return member.getStarcoin_count();
     }
 
-    public List<StoryListData> getStoryList(Long id){
-        System.out.println("HELLO1");
+    public List<StarcoinListData> getStarcoinList(Long id, Long storyId){
         Member member = findMemberById(id);
-        System.out.println("HELLO2");
+        List<Starcoin> starcoins = starcoinRepository.findAllByStoryId(storyId);
+        List<StarcoinListData> starcoinListDatas = new ArrayList();
+        for(Starcoin starcoin : starcoins){
+            //해당 코인이 회원은 어떤 상태인지 데이터 찾기
+            MemberStarcoin memberStarcoin = memberStarcoinRepository.findByMemberIdAndStarcoinId(member.getId(), starcoin.getId());
+
+            //찾은 데이터 추가
+            starcoinListDatas.add(new StarcoinListData(starcoin.getNum(), memberStarcoin.isTaken()));
+        }
+
+        return starcoinListDatas;
+    }
+
+    public List<StoryListData> getStoryList(Long id){
+        Member member = findMemberById(id);
         List<StoryListData> storyListDatas = new ArrayList();
         //스토리 정보를 데이터 DB에서 가져와서
         List<MemberStory> memberStories = memberStoryRepository.findAllByMemberId(member.getId());
-        System.out.println("HELLO3");
         for(MemberStory memberStory : memberStories){
             //하나씩 보면서 DB에 데이터를 넣자
 
             //해당 스토리 찾기
-            Story story = storyRepository.findById(memberStory.getStory().getId()).get();
+            Story story = findStoryByMemberStory(memberStory);
 
             //해당 스토리의 스타코인 개수 찾기
             List<Starcoin> starcoins = starcoinRepository.findAllByStoryId(story.getId());
             Long starcoinTotal = (long) starcoins.size();
             Long starcoinCurrent = (long) 0;
             for(Starcoin starcoin : starcoins){
-                if(memberStarcoinRepository.findByStarcoinId(starcoin.getId()).isTaken()){
+                if(memberStarcoinRepository.findByMemberIdAndStarcoinId(member.getId(), starcoin.getId()).isTaken()){
                     starcoinCurrent++;
                 }
             }
@@ -104,9 +117,44 @@ public class GameService {
         memberStarcoinRepository.saveAll(memberStarcoins);
     }
     public Member findMemberById(Long id){
-        Member member = memberRepository.findById(id).orElseThrow(() ->
+        return memberRepository.findById(id).orElseThrow(() ->
                 new CustomException(CustomExceptionList.MEMBER_NOT_FOUND));
-        return member;
     }
 
+    public Story findStoryByMemberStory(MemberStory memberStory){
+        return storyRepository.findById(memberStory.getStory().getId()).orElseThrow(() ->
+                new CustomException(CustomExceptionList.STORY_NOT_FOUND));
+
+    }
+    //임시로 사용(카카오 로그인 만들어지면 삭제할 것)
+    public long setInitial(){
+        Member member = new Member("HELLO");
+        memberRepository.save(member);
+        return member.getId();
+    }
+
+
+    public void increaseStarcoinCount(Long id){
+        Member member = findMemberById(id);
+        member.setStarcoin_count(member.getStarcoin_count()+1);
+        memberRepository.save(member);
+        return;
+    }
+
+    public void updateStarcoinStatus(Long memberId, Long storyId, Long starcoinNum){
+        //스토리와 스타코인번호가 일치하는 스타코인 찾기
+        Starcoin starcoin = starcoinRepository.findByStoryIdAndNum(storyId, starcoinNum);
+        //해당 스타코인을 memberStarcoin에서 찾기
+        MemberStarcoin memberStarcoin = memberStarcoinRepository.findByMemberIdAndStarcoinId(memberId, starcoin.getId());
+        memberStarcoin.setTaken(true);
+        memberStarcoinRepository.save(memberStarcoin);
+        return;
+    }
+
+    public void setStoryClear(Long id, Long storyId){
+        MemberStory memberStory = memberStoryRepository.findByMemberIdAndStoryId(id, storyId);
+        memberStory.setClear(true);
+        memberStoryRepository.save(memberStory);
+        return;
+    }
 }

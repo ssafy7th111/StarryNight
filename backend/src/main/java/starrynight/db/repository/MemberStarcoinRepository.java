@@ -5,5 +5,5 @@ import starrynight.db.entity.MemberStarcoin;
 import starrynight.db.entity.Starcoin;
 
 public interface MemberStarcoinRepository extends JpaRepository<MemberStarcoin, Long> {
-    MemberStarcoin findByStarcoinId(Long starcoinId);
+    MemberStarcoin findByMemberIdAndStarcoinId(Long memberId, Long starcoinId);
 }

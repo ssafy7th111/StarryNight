@@ -6,11 +6,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import starrynight.api.dto.game.StarcoinCountResponse;
+import starrynight.api.dto.game.StarcoinGetRequest;
+import starrynight.api.dto.game.StarcoinListResponse;
 import starrynight.api.dto.game.StoryListResponse;
 import starrynight.api.service.GameService;
 
@@ -27,7 +26,7 @@ public class GameController {
             value = "스타코인 개수 조회",
             notes = "현재 보유중인 스타코인의 개수를 조회한다."
     )
-    @GetMapping({"/starcoin/id/{id}"})
+    @GetMapping({"/starcoin/count/id/{id}"})
     public ResponseEntity<StarcoinCountResponse> findStarcoinCount(@ApiParam(value = "회원아이디PK번호",required = true, example = "1") @PathVariable Long id) {
         StarcoinCountResponse starcoinCountResponse = new StarcoinCountResponse();
         starcoinCountResponse.count = this.gameService.getStarcoinCount(id);
@@ -38,11 +37,61 @@ public class GameController {
             value = "스토리 목록 받기",
             notes = "회원의 스토리 목록을 받는다."
     )
-    @GetMapping({"/storylist/id/{id}"})
-    public ResponseEntity<StoryListResponse> findStorylist(@ApiParam(value = "회원아이디PK번호", required = true, example = "1") @PathVariable Long id){
+    @GetMapping({"/story/list/id/{id}"})
+    public ResponseEntity<StoryListResponse> findStorylist(
+            @ApiParam(value = "회원아이디PK번호", required = true, example = "1")
+            @PathVariable Long id){
         StoryListResponse storyListResponse = new StoryListResponse();
-        gameService.setInitialGameInfor(id);
         storyListResponse.stories = gameService.getStoryList(id);
         return new ResponseEntity(storyListResponse, HttpStatus.OK);
     }
+
+    @ApiOperation(
+            value = "스토리 내 스타코인 정보들",
+            notes = "스타코인 정보에 대해 해당 회원의 상태를 받는다."
+    )
+    @GetMapping({"/starcoin/list/id/{id}/story/{story}"})
+    public ResponseEntity<StarcoinListResponse> findStarcoinList(
+            @ApiParam(value = "회원아이디PK번호", required = true, example = "1")
+            @PathVariable Long id, Long story){
+        StarcoinListResponse starcoinListResponse = new StarcoinListResponse();
+        starcoinListResponse.starcoins = gameService.getStarcoinList(id, story);
+        return new ResponseEntity(starcoinListResponse, HttpStatus.OK);
+    }
+
+    //임시로 사용(카카오 로그인 만들어지면 삭제할 것)
+    @ApiOperation(
+            value = "테스트 : 멤버 초기 설정",
+            notes = "회원가입, 스타코인, 스토리 관련 멤버 초기 설정을 한다.")
+    @GetMapping({"TEST/initial"})
+    public ResponseEntity initial(){
+        //회원가입
+        long id = gameService.setInitial();
+        //스토리, 스타코인 초기설정
+        gameService.setInitialGameInfor(id);
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
+    @ApiOperation(
+            value = "스타코인 획득",
+            notes = "스타코인을 획득하였음을 DB에 반영한다.")
+    @PutMapping({"starcoin/get/id/{id}/story/{story}"})
+    public ResponseEntity getStarcoin(@PathVariable Long id, Long story,
+                                      @RequestBody StarcoinGetRequest starcoinGetRequest){
+        //멤버의 해당 코인 획득여부를 true로 변경
+        gameService.updateStarcoinStatus(id, story, starcoinGetRequest.starcoinNum);
+        //멤버 코인 개수 1 증가
+        gameService.increaseStarcoinCount(id);
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
+    @ApiOperation(
+            value = "스토리 완료",
+            notes = "스토리를 마무리하면 실행한다.")
+    @PutMapping({"story/clear/id/{id}/story/{story}"})
+    public ResponseEntity setStoryClear(@PathVariable Long id, Long story){
+        gameService.setStoryClear(id, story);
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
 }

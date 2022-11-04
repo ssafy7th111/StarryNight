@@ -21,6 +21,7 @@ public enum CustomExceptionList {
     //ADDRESS_NOT_MATCH(HttpStatus.UNAUTHORIZED, "E302", "해당 주소는 접근 권한이 없습니다."),
 
     //200~299 : Game 관련 예외처리
+    STORY_NOT_FOUND(HttpStatus.NOT_FOUND, "E200", "스토리가 존재하지 않습니다."),
     //300~399 : MyRoom 관련 예외처리
     //900~999 : 기타 예외처리
     INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "E998", "서버 오류 입니다."),
