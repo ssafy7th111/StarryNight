@@ -1,6 +1,8 @@
 package starrynight.db.entity;
 
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.DynamicUpdate;
 
@@ -9,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @DynamicUpdate
 @Entity
 @Getter
@@ -50,5 +53,10 @@ public class Member {
     @OneToOne(mappedBy = "member", fetch = FetchType.LAZY)
     private MemberRoom memberRoom;
 
+    //임시로 사용(카카오 로그인 만들어지면 삭제할 것)
+    public Member(String nickname){
+        this.nickname = nickname;
+        this.starcoin_count = (long) 0;
+    }
 
 }
