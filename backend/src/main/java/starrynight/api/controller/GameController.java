@@ -54,8 +54,7 @@ public class GameController {
     public ResponseEntity<StarcoinListResponse> findStarcoinList(
             @ApiParam(value = "회원아이디PK번호", required = true, example = "1")
             @PathVariable Long id, Long story){
-        StarcoinListResponse starcoinListResponse = new StarcoinListResponse();
-        starcoinListResponse.starcoins = gameService.getStarcoinList(id, story);
+        StarcoinListResponse starcoinListResponse = gameService.getStarcoinList(id, story);
         return new ResponseEntity(starcoinListResponse, HttpStatus.OK);
     }
 

@@ -11,4 +11,12 @@ public class StarcoinListResponse {
             dataType = "List<StarcoinlistData>"
     )
     public List<StarcoinListData> starcoins;
+
+    @ApiModelProperty(
+            value = "해당 스토리의 스타코인 개수",
+            name = "count",
+            dataType = "int"
+    )
+    public int count;
+
 }
