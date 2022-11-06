@@ -35,7 +35,7 @@ public class GameService {
 
     public Long getStarcoinCount(Long id){
         Member member = findMemberById(id);
-        return member.getStarcoin_count();
+        return member.getStarcoinCount();
     }
 
     public List<StarcoinListData> getStarcoinList(Long id, Long storyId){
@@ -136,7 +136,7 @@ public class GameService {
 
     public void increaseStarcoinCount(Long id){
         Member member = findMemberById(id);
-        member.setStarcoin_count(member.getStarcoin_count()+1);
+        member.setStarcoinCount(member.getStarcoinCount()+1);
         memberRepository.save(member);
         return;
     }
