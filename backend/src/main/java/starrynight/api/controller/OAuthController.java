@@ -56,7 +56,7 @@ public class OAuthController {
             nickname = "";
         }
 
-        response.sendRedirect(UriComponentsBuilder.fromUriString("http://starry-night.kr/logincheck")
+        response.sendRedirect(UriComponentsBuilder.fromUriString("http://starry-night.kr/logined")
                 .queryParam("accessToken", token.getAccessToken())
                 .queryParam("refreshToken", token.getRefreshToken())
                 .queryParam("accessTokenExpiration", accessTokenExpiration)
