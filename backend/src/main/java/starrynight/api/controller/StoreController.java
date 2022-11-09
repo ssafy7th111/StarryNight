@@ -27,7 +27,7 @@ public class StoreController {
 
     @ApiOperation(value = "상점 가구 조회", notes = "상점에 판매되는 가구를 조회한다.", response = StoreResponse.class)
     @GetMapping("/id/{id}/category/{category}/page/{page}")
-    public ResponseEntity<StoreResponse> showItems(@PathVariable Long id, @PathVariable Long category, @PathVariable int page) {
+    public ResponseEntity<StoreResponse> showItems(@ApiParam(value = "아이디", required = true) @PathVariable Long id, @ApiParam(value = "카테고리", required = true) @PathVariable Long category, @ApiParam(value = "페이지", required = true) @PathVariable int page) {
         StoreResponse response = storeService.showItems(id, category, page);
         return new ResponseEntity<>(response,HttpStatus.OK);
     }
