@@ -25,6 +25,10 @@ public enum CustomExceptionList {
     //200~299 : Game 관련 예외처리
     STORY_NOT_FOUND(HttpStatus.NOT_FOUND, "E200", "스토리가 존재하지 않습니다."),
     //300~399 : MyRoom 관련 예외처리
+    ROOM_NOT_FOUND(HttpStatus.NOT_FOUND,"E300","회원의 다락방이 존재하지 않습니다."),
+    FURNITURE_NOT_FOUND(HttpStatus.NOT_FOUND,"E301","가구가 존재하지 않습니다."),
+    CATEGORY_NOT_FOUND(HttpStatus.NOT_FOUND,"E302","카테고리가 존재하지 않습니다."),
+
     //900~999 : 기타 예외처리
     INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "E998", "서버 오류 입니다."),
     RUNTIME_EXCEPTION(HttpStatus.BAD_REQUEST, "E999", "서비스에 오류가 발생했습니다."),;

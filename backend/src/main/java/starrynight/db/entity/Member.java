@@ -42,13 +42,6 @@ public class Member {
     )
     private List<MemberStory> memberStories = new ArrayList();
 
-    @OneToMany(
-            mappedBy = "member",
-            cascade = {CascadeType.ALL}
-    )
-    private List<MemberFurniture> memberFurnitures = new ArrayList();
-
-
     @OneToOne(mappedBy = "member", fetch = FetchType.LAZY)
     private MemberRoom memberRoom;
 
