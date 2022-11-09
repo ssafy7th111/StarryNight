@@ -86,6 +86,7 @@ public class RoomService {
         MemberRoom room = MemberRoom.builder()
                 .member(searchMember(id))
                 .build();
+        memberRoomRepository.save(room);
         List<Furniture> furnitures = furnitureRepository.findAll();
         for (Furniture furniture: furnitures) {
             Check defaultDisplay = Check.N;
