@@ -21,7 +21,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class RoomService {
     private final FurnitureRepository furnitureRepository;
-    private final FurnitureCategoryRepository furnitureCategoryRepository;
     private final MemberRoomRepository memberRoomRepository;
     private final MemberRepository memberRepository;
     private final MemberFurnitureRepository memberFurnitureRepository;
@@ -82,14 +81,15 @@ public class RoomService {
         return response;
     }
 
-    public Long makeRoom(Long id) {
+    public void makeRoom(Long id) {
+        if(memberRoomRepository.existsByMemberId(id)) return;
         MemberRoom room = MemberRoom.builder()
                 .member(searchMember(id))
                 .build();
-        Long roomId = memberRoomRepository.save(room).getId();
         List<Furniture> furnitures = furnitureRepository.findAll();
         for (Furniture furniture: furnitures) {
             Check defaultDisplay = Check.N;
+            //기본 아이템인 경우 추가
             if (furniture.getName().equals("화이트 벽지") || furniture.getName().equals("기본 바닥")) {
                 defaultDisplay = Check.Y;
             }
@@ -103,7 +103,6 @@ public class RoomService {
                     .reflect(Check.N)
                     .build());
         }
-        return roomId;
     }
 
     private Member searchMember(Long id) {
