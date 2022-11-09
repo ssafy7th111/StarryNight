@@ -23,7 +23,7 @@ public class RoomController {
 
     @ApiOperation(value = "방 정보 변경", notes = "방의 가구 구성을 변경한다.")
     @PostMapping("/id/{id}")
-    public ResponseEntity<RoomInfo> saveRoom(@ApiParam(value = "방에 대한 정보") @RequestBody RoomInfo roomInfo, @PathVariable Long id) {
+    public ResponseEntity<RoomInfo> saveRoom(@ApiParam(value = "방에 대한 정보") @RequestBody RoomInfo roomInfo, @ApiParam(value = "아이디", required = true) @PathVariable Long id) {
         roomService.saveRoom(id, roomInfo);
         return new ResponseEntity<>(HttpStatus.OK);
     }
