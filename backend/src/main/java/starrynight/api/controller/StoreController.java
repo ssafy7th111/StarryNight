@@ -11,7 +11,7 @@ import starrynight.api.dto.store.StoreResponse;
 import starrynight.api.service.StoreService;
 
 @RestController
-@RequestMapping("/shop")
+@RequestMapping("/store")
 @RequiredArgsConstructor
 public class StoreController {
 
