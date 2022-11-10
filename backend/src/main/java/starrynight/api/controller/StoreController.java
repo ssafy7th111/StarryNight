@@ -4,6 +4,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import starrynight.api.dto.store.OrderRequest;
@@ -18,12 +19,19 @@ public class StoreController {
     private final StoreService storeService;
 
     @ApiOperation(value = "가구 구매", notes = "가구를 구매한다.")
-    @PostMapping("/order")
+    @PostMapping(value = "/order", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<OrderRequest> orderFurniture(@RequestBody @ApiParam(value = "구매 정보", required = true)  OrderRequest orderRequest) {
         System.out.println("controller");
         storeService.orderFurniture(orderRequest);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
 
+    @ApiOperation(value = "가구 구매", notes = "가구를 구매한다.")
+    @PostMapping(value = "/order", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    public ResponseEntity<OrderRequest> orderFurniture2(OrderRequest orderRequest) {
+        System.out.println("controller");
+        storeService.orderFurniture(orderRequest);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @ApiOperation(value = "상점 가구 조회", notes = "상점에 판매되는 가구를 조회한다.", response = StoreResponse.class)

@@ -34,18 +34,15 @@ public class StoreService {
         //회원 정보와 가구 찾기
         Member member = searchMember(orderRequest.getId());
         Furniture furniture = searchFurniture(orderRequest.getName());
-        System.out.println("가구 조회");
 
         //가구 구매
         MemberFurniture memberFurniture = searchMemberFurniture(member.getMemberRoom().getId(), furniture.getId());
         memberFurniture.setBuy(Check.Y);
         memberFurnitureRepository.save(memberFurniture);
-        System.out.println("가구 구매");
 
         //스타 지불
         member.setStarcoinCount(member.getStarcoinCount() - furniture.getPrice());
         memberRepository.save(member);
-        System.out.println("스타 지불");
     }
 
     public StoreResponse showItems(Long id, Long category, int page) {
