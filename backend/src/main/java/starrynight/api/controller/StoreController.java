@@ -19,17 +19,15 @@ public class StoreController {
     private final StoreService storeService;
 
     @ApiOperation(value = "가구 구매", notes = "가구를 구매한다.")
-    @PostMapping(value = "/order", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/order")
     public ResponseEntity<OrderRequest> orderFurniture(@RequestBody @ApiParam(value = "구매 정보", required = true)  OrderRequest orderRequest) {
-        System.out.println("controller");
         storeService.orderFurniture(orderRequest);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @ApiOperation(value = "가구 구매", notes = "가구를 구매한다.")
-    @PostMapping(value = "/order", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    public ResponseEntity<OrderRequest> orderFurniture2(OrderRequest orderRequest) {
-        System.out.println("controller");
+    @PutMapping(value = "/order")
+    public ResponseEntity<OrderRequest> orderFurniture2(@RequestBody @ApiParam(value = "구매 정보", required = true)  OrderRequest orderRequest) {
         storeService.orderFurniture(orderRequest);
         return new ResponseEntity<>(HttpStatus.OK);
     }
