@@ -19,7 +19,8 @@ public class StoreController {
 
     @ApiOperation(value = "가구 구매", notes = "가구를 구매한다.")
     @PostMapping("/order")
-    public ResponseEntity<OrderRequest> orderFurniture(@RequestBody @ApiParam(value = "구매 정보")  OrderRequest orderRequest) {
+    public ResponseEntity<OrderRequest> orderFurniture(@RequestBody @ApiParam(value = "구매 정보", required = true)  OrderRequest orderRequest) {
+        System.out.println("controller");
         storeService.orderFurniture(orderRequest);
         return new ResponseEntity<>(HttpStatus.OK);
 
