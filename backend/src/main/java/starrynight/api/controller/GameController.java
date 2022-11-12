@@ -58,19 +58,6 @@ public class GameController {
         return new ResponseEntity(starcoinListResponse, HttpStatus.OK);
     }
 
-    //임시로 사용(카카오 로그인 만들어지면 삭제할 것)
-    @ApiOperation(
-            value = "테스트 : 멤버 초기 설정",
-            notes = "회원가입, 스타코인, 스토리 관련 멤버 초기 설정을 한다.")
-    @GetMapping({"TEST/initial"})
-    public ResponseEntity initial(){
-        //회원가입
-        long id = gameService.setInitial();
-        //스토리, 스타코인 초기설정
-        gameService.setInitialGameInfor(id);
-        return new ResponseEntity(HttpStatus.OK);
-    }
-
     @ApiOperation(
             value = "스타코인 획득",
             notes = "스타코인을 획득하였음을 DB에 반영한다.")

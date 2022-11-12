@@ -128,13 +128,6 @@ public class GameService {
                 new CustomException(CustomExceptionList.STORY_NOT_FOUND));
 
     }
-    //임시로 사용(카카오 로그인 만들어지면 삭제할 것)
-    public long setInitial(){
-        Member member = new Member("HELLO");
-        memberRepository.save(member);
-        return member.getId();
-    }
-
 
     public void increaseStarcoinCount(Long id){
         Member member = findMemberById(id);
