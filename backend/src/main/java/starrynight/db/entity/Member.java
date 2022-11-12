@@ -1,6 +1,8 @@
 package starrynight.db.entity;
 
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -12,6 +14,7 @@ import java.util.List;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @DynamicUpdate
+@DynamicInsert
 @Entity
 @Getter
 @Setter
@@ -30,6 +33,7 @@ public class Member {
     private Date createDate;
 
     @Column(name = "starcoin_count")
+    @ColumnDefault("0")
     private Long starcoinCount;
 
     @Column(name = "refresh_token")

@@ -54,22 +54,8 @@ public class GameController {
     public ResponseEntity<StarcoinListResponse> findStarcoinList(
             @ApiParam(value = "회원아이디PK번호", required = true, example = "1")
             @PathVariable Long id, Long story){
-        StarcoinListResponse starcoinListResponse = new StarcoinListResponse();
-        starcoinListResponse.starcoins = gameService.getStarcoinList(id, story);
+        StarcoinListResponse starcoinListResponse = gameService.getStarcoinList(id, story);
         return new ResponseEntity(starcoinListResponse, HttpStatus.OK);
-    }
-
-    //임시로 사용(카카오 로그인 만들어지면 삭제할 것)
-    @ApiOperation(
-            value = "테스트 : 멤버 초기 설정",
-            notes = "회원가입, 스타코인, 스토리 관련 멤버 초기 설정을 한다.")
-    @GetMapping({"TEST/initial"})
-    public ResponseEntity initial(){
-        //회원가입
-        long id = gameService.setInitial();
-        //스토리, 스타코인 초기설정
-        gameService.setInitialGameInfor(id);
-        return new ResponseEntity(HttpStatus.OK);
     }
 
     @ApiOperation(

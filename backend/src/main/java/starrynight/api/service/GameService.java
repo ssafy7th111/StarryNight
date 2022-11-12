@@ -3,6 +3,7 @@ package starrynight.api.service;
 import org.springframework.stereotype.Service;
 import starrynight.api.dto.game.StarcoinCountResponse;
 import starrynight.api.dto.game.StarcoinListData;
+import starrynight.api.dto.game.StarcoinListResponse;
 import starrynight.api.dto.game.StoryListData;
 import starrynight.db.entity.*;
 import starrynight.db.repository.*;
@@ -38,19 +39,20 @@ public class GameService {
         return member.getStarcoinCount();
     }
 
-    public List<StarcoinListData> getStarcoinList(Long id, Long storyId){
+    public StarcoinListResponse getStarcoinList(Long id, Long storyId){
+        StarcoinListResponse starcoinListResponse = new StarcoinListResponse();
         Member member = findMemberById(id);
         List<Starcoin> starcoins = starcoinRepository.findAllByStoryId(storyId);
-        List<StarcoinListData> starcoinListDatas = new ArrayList();
+            starcoinListResponse.count = starcoins.size();
+        starcoinListResponse.starcoins = new ArrayList();
         for(Starcoin starcoin : starcoins){
             //해당 코인이 회원은 어떤 상태인지 데이터 찾기
             MemberStarcoin memberStarcoin = memberStarcoinRepository.findByMemberIdAndStarcoinId(member.getId(), starcoin.getId());
-
             //찾은 데이터 추가
-            starcoinListDatas.add(new StarcoinListData(starcoin.getNum(), memberStarcoin.isTaken()));
+            starcoinListResponse.starcoins.add(new StarcoinListData(starcoin.getNum(), memberStarcoin.isTaken()));
         }
 
-        return starcoinListDatas;
+        return starcoinListResponse;
     }
 
     public List<StoryListData> getStoryList(Long id){
@@ -126,13 +128,6 @@ public class GameService {
                 new CustomException(CustomExceptionList.STORY_NOT_FOUND));
 
     }
-    //임시로 사용(카카오 로그인 만들어지면 삭제할 것)
-    public long setInitial(){
-        Member member = new Member("HELLO");
-        memberRepository.save(member);
-        return member.getId();
-    }
-
 
     public void increaseStarcoinCount(Long id){
         Member member = findMemberById(id);
