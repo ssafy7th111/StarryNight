@@ -2,6 +2,8 @@ package starrynight.db.entity;
 
 import lombok.*;
 import org.hibernate.annotations.DynamicUpdate;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -16,19 +18,37 @@ import java.util.List;
 @Table(
         name = "member"
 )
+@EntityListeners(AuditingEntityListener.class)
 public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name ="member_id")
-    private Long id;               //식별자
-    private Date createDate;       //가입일자
-    private Long starcoinCount;    //보유중인 스타코인 개수
-    private String refreshToken;   //리프레쉬 토큰
-    private String provider;       //소셜로그인 플랫폼
-    private String email;           //소셜로그인 이메일
-    private String name;            // 소셜로그인 이름
-    private String nickname;       // 닉네임
-    private String isDeleted;       // 탈퇴 여부
+    private Long id;
+
+    @CreatedDate
+    @Column(name = "create_date", nullable = false, updatable = false)
+    private Date createDate;
+
+    @Column(name = "starcoin_count")
+    private Long starcoinCount;
+
+    @Column(name = "refresh_token")
+    private String refreshToken;
+
+    @Column(name = "provider")
+    private String provider;
+
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "nickname")
+    private String nickname;
+
+    @Column(name = "is_resigned")
+    private String isResigned;
 
     @OneToMany(
             mappedBy = "member",

@@ -20,7 +20,7 @@ public class MemberStory {
     @Column(name ="member_story_id")
     private Long id;    //식별자
 
-    @Column(name ="isClear")
+    @Column(name ="is_clear")
     private boolean isClear;
 
     @ManyToOne(fetch = FetchType.LAZY)

@@ -2,6 +2,7 @@ package starrynight.config.auth;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.commons.lang3.RandomStringUtils;
 import starrynight.db.entity.Member;
 
 @Getter
@@ -13,10 +14,12 @@ public class MemberProfile {
     private String nickname;
 
     public Member toMember() {
+        nickname = RandomStringUtils.random(8, true, true);
         return Member.builder()
                 .name(name)
                 .email(email)
                 .provider(provider)
+                .nickname(nickname)
                 .build();
     }
 }

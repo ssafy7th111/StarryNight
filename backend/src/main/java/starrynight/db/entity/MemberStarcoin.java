@@ -30,7 +30,7 @@ public class MemberStarcoin {
     @JoinColumn(name = "member_id")
     private Member member;
 
-    @Column(name ="isTaken")
+    @Column(name ="is_taken")
     private boolean isTaken;
 
     public MemberStarcoin(Member member, Starcoin starcoin){
