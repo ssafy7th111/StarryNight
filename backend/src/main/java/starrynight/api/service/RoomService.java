@@ -59,6 +59,9 @@ public class RoomService {
     }
 
     public RoomInfo searchRoom(Long id) {
+        if(!memberRoomRepository.existsByMemberId(id)){
+            makeRoom(id);
+        }
         RoomInfo response = new RoomInfo();
 
         //사용하고 있는 벽과 바닥 조회
