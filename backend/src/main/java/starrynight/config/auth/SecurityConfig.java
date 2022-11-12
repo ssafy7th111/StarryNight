@@ -33,6 +33,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.addAllowedOriginPattern("http://localhost:3000");
         configuration.addAllowedOriginPattern("http://localhost:8081");
+        configuration.addAllowedOriginPattern("http://k7a605.p.ssafy.io:8081");
+        configuration.addAllowedOriginPattern("https://k7a605.p.ssafy.io:8081");
+        configuration.addAllowedOriginPattern("http://k7a605.p.ssafy.io:3000");
+        configuration.addAllowedOriginPattern("https://k7a605.p.ssafy.io:3000");
+        configuration.addAllowedOriginPattern("https://k7a605.p.ssafy.io");
+        configuration.addAllowedOriginPattern("http://starry-night.kr:8081");
+        configuration.addAllowedOriginPattern("https://starry-night.kr:8081");
+        configuration.addAllowedOriginPattern("http://starry-night.kr:3000");
+        configuration.addAllowedOriginPattern("https://starry-night.kr:3000");
+        configuration.addAllowedOriginPattern("https://starry-night.kr");
         configuration.addAllowedOriginPattern("*");
         configuration.addAllowedHeader("*");
         configuration.addAllowedMethod("*");
