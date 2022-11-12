@@ -35,10 +35,4 @@ public class RoomController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @ApiOperation(value = "초기 방 세팅(임시 API)", notes = "회원가입시 기본 가구 정보 세팅")
-    @GetMapping("temp/id/{id}")
-    public ResponseEntity<Long> makeRoom(@ApiParam(value = "아이디", required = true) @PathVariable Long id) {
-        roomService.makeRoom(id);
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
 }
