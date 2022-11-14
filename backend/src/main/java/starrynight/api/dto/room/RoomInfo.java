@@ -3,6 +3,7 @@ package starrynight.api.dto.room;
 import java.util.List;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -32,7 +33,10 @@ public class RoomInfo {
         private int y;
         @ApiModelProperty(value = "사용여부", name = "use", example = "true", dataType = "boolean")
         private boolean use;
+        @ApiModelProperty(value = "반전여부", name = "reflect", example = "false", dataType = "boolean")
+        private boolean reflect;
         @ApiModelProperty(value = "카테고리", name = "category", example = "벽걸이", dataType = "String")
         private String category;
+
     }
 }

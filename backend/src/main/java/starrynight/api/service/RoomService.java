@@ -36,6 +36,7 @@ public class RoomService {
         for (MemberFurniture furnitureInfo:memberFurnitureList) {
             furnitureInfo.setX(0);
             furnitureInfo.setY(0);
+            furnitureInfo.setReflect(Check.N);
             furnitureInfo.setDisplay(Check.N);
             memberFurnitureRepository.save(furnitureInfo);
         }
@@ -51,6 +52,7 @@ public class RoomService {
             RoomInfo.FurnitureInfo furnitureInfo = roomInfo.getFurnitures().get(i);
             if (furnitureInfo.isUse()) {
                 MemberFurniture furniture = searchMemberFurniture(roomId, searchFurnitureId(furnitureInfo.getName()));
+                furniture.setReflect(furnitureInfo.isReflect()==false?Check.N:Check.Y);
                 furniture.setDisplay(Check.Y);
                 furniture.setX(furnitureInfo.getX());
                 furniture.setY(furnitureInfo.getY());
@@ -77,6 +79,7 @@ public class RoomService {
             furnitureInfo.setX(furniture.getX());
             furnitureInfo.setY(furniture.getY());
             furnitureInfo.setUse(furniture.getDisplay() != Check.N);
+            furnitureInfo.setReflect(furniture.getReflect()!=Check.N);
             furnitureInfo.setCategory(furniture.getFurniture().getFurnitureCategory().getName());
             furnitureList.add(furnitureInfo);
         }
