@@ -113,13 +113,15 @@ public class RoomService {
         }
     }
 
-    public int randomRoom(Long id){
-        int RandomId = id.intValue();
+    public int randomRoom(int id){
+        int RandomId = id;
         int memberSize = memberRoomRepository.findAll().size();
-        System.out.println(RandomId);
-        System.out.println(id.intValue());
-        while(RandomId!=id.intValue()&&RandomId!=0) {
+        boolean flag = true;
+        while(flag) {
             RandomId = getNumber(memberSize+1);
+            if((RandomId!=id&&RandomId!=0)||memberSize==1){
+                flag = false;
+            }
         }
         return RandomId;
     }
