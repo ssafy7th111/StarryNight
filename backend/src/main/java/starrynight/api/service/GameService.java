@@ -91,8 +91,7 @@ public class GameService {
         //Response
         return storyListDatas;
     }
-    public void setInitialGameInfor(Long id){
-        Member member = findMemberById(id);
+    public void setInitialGameInfor(Member member){
         List<Story> stories = storyRepository.findAll();    //스토리 테이블의 모든 스토리들을 불러오기
         List<MemberStory> memberStories = new ArrayList();
         for(Story story : stories){
