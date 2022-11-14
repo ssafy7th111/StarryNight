@@ -116,12 +116,8 @@ public class RoomService {
     public int randomRoom(Long id){
         int RandomId = id.intValue();
         int memberSize = memberRoomRepository.findAll().size();
-        if(memberSize==1){ //멤버수가 1명인 경우
-            return RandomId;
-        }
         while(RandomId!=id.intValue()&&RandomId!=0) {
             RandomId = getNumber(memberSize+1);
-            System.out.println(RandomId);
         }
         return RandomId;
     }
