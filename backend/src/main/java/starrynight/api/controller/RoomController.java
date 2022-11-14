@@ -35,4 +35,12 @@ public class RoomController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
+    @ApiOperation(value = "본인을 제외한 랜덤 ID 조회", notes = "랜덤 아이디를 조회한다.", response = RoomInfo.class)
+    @GetMapping("/random/{id}")
+    public ResponseEntity<Integer> randomRoom(@ApiParam(value = "아이디", required = true) @PathVariable Long id) {
+        Integer randomId = roomService.randomRoom(id);
+        return new ResponseEntity<>(randomId, HttpStatus.OK);
+    }
+
+
 }

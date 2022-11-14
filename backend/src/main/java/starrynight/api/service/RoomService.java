@@ -15,6 +15,7 @@ import starrynight.exception.CustomExceptionList;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 @Service
 @Transactional
@@ -110,6 +111,24 @@ public class RoomService {
                     .reflect(Check.N)
                     .build());
         }
+    }
+
+    public int randomRoom(Long id){
+        int RandomId = id.intValue();
+        int memberSize = memberRoomRepository.findAll().size();
+        if(memberSize==1){ //멤버수가 1명인 경우
+            return RandomId;
+        }
+        while(RandomId!=id.intValue()) {
+            RandomId = getNumber(memberSize)+1;
+        }
+        return RandomId;
+    }
+
+    private int getNumber(int range) {
+        Random random = new Random();
+        random.setSeed(System.currentTimeMillis());
+        return random.nextInt(range);
     }
 
     private Member searchMember(Long id) {
