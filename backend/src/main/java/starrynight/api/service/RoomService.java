@@ -122,7 +122,7 @@ public class RoomService {
         while(RandomId!=id.intValue()) {
             RandomId = getNumber(memberSize)+1;
         }
-        return memberSize;
+        return RandomId;
     }
 
     private int getNumber(int range) {
