@@ -69,10 +69,12 @@ public class OAuthService implements OAuth2UserService<OAuth2UserRequest, OAuth2
                 .orElse(memberProfile.toMember());
 
         //DB에 멤버가 이미 존재한다면
-        if(memberRepository.existsById(member.getId())){
-            memberRepository.save(member);
+        try{
+            if(memberRepository.existsById(member.getId())){
+                memberRepository.save(member);
+            }
         }
-        else{
+        catch (Exception e){
             memberRepository.save(member);
             gameService.setInitialGameInfor(member);
         }
