@@ -116,6 +116,7 @@ public class RoomService {
     public int randomRoom(int id){
         int RandomId = id;
         int memberSize = memberRoomRepository.findAll().size();
+        System.out.println(memberSize);
         boolean flag = true;
         while(flag) {
             RandomId = getNumber(memberSize+1);
