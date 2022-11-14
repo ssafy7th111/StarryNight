@@ -121,6 +121,7 @@ public class RoomService {
         }
         while(RandomId!=id.intValue()&&RandomId!=0) {
             RandomId = getNumber(memberSize+1);
+            System.out.println(RandomId);
         }
         return RandomId;
     }
