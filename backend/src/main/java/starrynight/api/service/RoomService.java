@@ -119,8 +119,8 @@ public class RoomService {
         if(memberSize==1){ //멤버수가 1명인 경우
             return RandomId;
         }
-        while(RandomId!=id.intValue()) {
-            RandomId = getNumber(memberSize)+1;
+        while(RandomId!=id.intValue()&&RandomId!=0) {
+            RandomId = getNumber(memberSize+1);
         }
         return RandomId;
     }
