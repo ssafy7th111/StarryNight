@@ -119,7 +119,7 @@ public class RoomService {
         boolean flag = true;
         while(flag) {
             RandomId = getNumber(memberSize+1);
-            if((RandomId!=id&&RandomId!=0)||memberSize==1){
+            if((RandomId!=id&&RandomId!=0&&memberRoomRepository.existsByMemberId(Long.valueOf(RandomId)))||memberSize==1){
                 flag = false;
             }
         }
