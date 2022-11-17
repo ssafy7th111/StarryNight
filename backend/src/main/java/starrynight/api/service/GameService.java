@@ -55,9 +55,9 @@ public class GameService {
         return starcoinListResponse;
     }
 
-    public boolean getStoryClear(Long id, String constellation){
+    public boolean getStoryClear(Long id, String constellationEng){
         Member member = findMemberById(id);
-        Story story = storyRepository.findByConstellation(constellation);
+        Story story = storyRepository.findByConstellationEng(constellationEng);
         MemberStory memberStory = memberStoryRepository.findByMemberIdAndStoryId(member.getId(), story.getId());
         return memberStory.isClear();
     }

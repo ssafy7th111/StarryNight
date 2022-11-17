@@ -26,6 +26,9 @@ public class Story {
     @Column(name ="constellation")
     private String constellation;   //별자리 이름
 
+    @Column(name ="constellation_eng")
+    private String constellationEng;   //별자리 이름(영어)
+
     @Column(name ="summary")
     private String summary;         //스토리 요약(부제)
 
