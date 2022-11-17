@@ -1,5 +1,6 @@
 package starrynight.api.service;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import starrynight.api.dto.game.StarcoinCountResponse;
 import starrynight.api.dto.game.StarcoinListData;
@@ -57,7 +58,9 @@ public class GameService {
 
     public boolean getStoryClear(Long id, String constellationEng){
         Member member = findMemberById(id);
-        Story story = storyRepository.findByConstellationEng(constellationEng);
+        Story story = storyRepository.findByConstellationEng(constellationEng)
+                .orElseThrow(() -> new CustomException(CustomExceptionList.STORY_NOT_FOUND));
+        System.out.println("find story in get isStoryClear: " + story);
         MemberStory memberStory = memberStoryRepository.findByMemberIdAndStoryId(member.getId(), story.getId());
         return memberStory.isClear();
     }
