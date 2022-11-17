@@ -5,4 +5,5 @@ import starrynight.db.entity.Story;
 
 
 public interface StoryRepository extends JpaRepository<Story, Long> {
+    Story findByConstellation(String constellation);
 }
