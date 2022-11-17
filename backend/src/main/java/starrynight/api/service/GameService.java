@@ -55,6 +55,13 @@ public class GameService {
         return starcoinListResponse;
     }
 
+    public boolean getStoryClear(Long id, String constellation){
+        Member member = findMemberById(id);
+        Story story = storyRepository.findByConstellation(constellation);
+        MemberStory memberStory = memberStoryRepository.findByMemberIdAndStoryId(member.getId(), story.getId());
+        return memberStory.isClear();
+    }
+
     public List<StoryListData> getStoryList(Long id){
         Member member = findMemberById(id);
         List<StoryListData> storyListDatas = new ArrayList();
