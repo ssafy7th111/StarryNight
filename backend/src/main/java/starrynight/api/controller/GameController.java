@@ -84,7 +84,7 @@ public class GameController {
             value = "스토리 완료여부 조회",
             notes = "해당 별자리(영어)의 게임 스토리를 클리어했는지 조회한다.")
     @GetMapping({"story/clear/id/{id}/constellation/{constellation}"})
-    public ResponseEntity<Boolean> getStoryClear(@PathVariable Long id, String constellation){
+    public ResponseEntity<Boolean> getStoryClear(@PathVariable Long id, @PathVariable String constellation){
         return new ResponseEntity(gameService.getStoryClear(id, constellation), HttpStatus.OK);
     }
 }
