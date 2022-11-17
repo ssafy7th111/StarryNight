@@ -1,9 +1,6 @@
 package starrynight.db.entity;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
@@ -27,9 +24,14 @@ public class MemberRoom {
             mappedBy = "memberRoom",
             cascade = {CascadeType.ALL}
     )
-    private List<MemberRoomInfo> memberRoomInfos = new ArrayList();
+    private List<MemberFurniture> memberFurnitures = new ArrayList();
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "member_id")
     private Member member;
+
+    @Builder
+    public MemberRoom(Member member){
+        this.member = member;
+    }
 }

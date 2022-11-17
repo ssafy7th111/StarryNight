@@ -1,8 +1,10 @@
 package starrynight.api.service;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import starrynight.api.dto.game.StarcoinCountResponse;
 import starrynight.api.dto.game.StarcoinListData;
+import starrynight.api.dto.game.StarcoinListResponse;
 import starrynight.api.dto.game.StoryListData;
 import starrynight.db.entity.*;
 import starrynight.db.repository.*;
@@ -35,22 +37,32 @@ public class GameService {
 
     public Long getStarcoinCount(Long id){
         Member member = findMemberById(id);
-        return member.getStarcoin_count();
+        return member.getStarcoinCount();
     }
 
-    public List<StarcoinListData> getStarcoinList(Long id, Long storyId){
+    public StarcoinListResponse getStarcoinList(Long id, Long storyId){
+        StarcoinListResponse starcoinListResponse = new StarcoinListResponse();
         Member member = findMemberById(id);
         List<Starcoin> starcoins = starcoinRepository.findAllByStoryId(storyId);
-        List<StarcoinListData> starcoinListDatas = new ArrayList();
+            starcoinListResponse.count = starcoins.size();
+        starcoinListResponse.starcoins = new ArrayList();
         for(Starcoin starcoin : starcoins){
             //해당 코인이 회원은 어떤 상태인지 데이터 찾기
             MemberStarcoin memberStarcoin = memberStarcoinRepository.findByMemberIdAndStarcoinId(member.getId(), starcoin.getId());
-
             //찾은 데이터 추가
-            starcoinListDatas.add(new StarcoinListData(starcoin.getNum(), memberStarcoin.isTaken()));
+            starcoinListResponse.starcoins.add(new StarcoinListData(starcoin.getNum(), memberStarcoin.isTaken()));
         }
 
-        return starcoinListDatas;
+        return starcoinListResponse;
+    }
+
+    public boolean getStoryClear(Long id, String constellationEng){
+        Member member = findMemberById(id);
+        Story story = storyRepository.findByConstellationEng(constellationEng)
+                .orElseThrow(() -> new CustomException(CustomExceptionList.STORY_NOT_FOUND));
+        System.out.println("find story in get isStoryClear: " + story);
+        MemberStory memberStory = memberStoryRepository.findByMemberIdAndStoryId(member.getId(), story.getId());
+        return memberStory.isClear();
     }
 
     public List<StoryListData> getStoryList(Long id){
@@ -89,8 +101,7 @@ public class GameService {
         //Response
         return storyListDatas;
     }
-    public void setInitialGameInfor(Long id){
-        Member member = findMemberById(id);
+    public void setInitialGameInfor(Member member){
         List<Story> stories = storyRepository.findAll();    //스토리 테이블의 모든 스토리들을 불러오기
         List<MemberStory> memberStories = new ArrayList();
         for(Story story : stories){
@@ -126,17 +137,10 @@ public class GameService {
                 new CustomException(CustomExceptionList.STORY_NOT_FOUND));
 
     }
-    //임시로 사용(카카오 로그인 만들어지면 삭제할 것)
-    public long setInitial(){
-        Member member = new Member("HELLO");
-        memberRepository.save(member);
-        return member.getId();
-    }
-
 
     public void increaseStarcoinCount(Long id){
         Member member = findMemberById(id);
-        member.setStarcoin_count(member.getStarcoin_count()+1);
+        member.setStarcoinCount(member.getStarcoinCount()+1);
         memberRepository.save(member);
         return;
     }
