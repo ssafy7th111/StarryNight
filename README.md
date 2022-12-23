@@ -1,6 +1,6 @@
 # **⭐ Starry Night : 멀기만 했던 별들과 가까워 지는 밤**
 
-![Logo](https://user-images.githubusercontent.com/70651931/209348888-7636b176-4e0f-4da4-bbe0-c08a2ba86681.png)
+![Logo](README.assets/image/logo.png)
 
 ## **[Starry Night 링크](https://starry-night.kr/)**
 
