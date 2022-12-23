@@ -346,49 +346,49 @@ backend
 
 ### 신화 게임
 
-![virgo](/uploads/028d32b9f5b2d62b8056e7cb9a85de53/virgo.gif)
+![virgo](https://user-images.githubusercontent.com/70651931/209349207-2b45e30b-de50-4dfe-b874-a61e71e0fbe3.gif)
 
 - 처녀자리 - 물체와 상호작용
 
-![quest](/uploads/742e9e0886368eb39db53fe3a135a7d9/quest.gif)
+![quest](https://user-images.githubusercontent.com/70651931/209349223-21ecdf56-0752-450e-9462-cc971b57e963.gif)
 
 - 별자리 신화 관련 퀘스트
 
-![lion](/uploads/e1a013b5e69b6ab08db605228afebff7/lion.gif)
+![lion](https://user-images.githubusercontent.com/70651931/209349238-48fb2b78-5c87-4aaf-8b36-c26178d40054.gif)
 
 - 사자자리 - 미니게임(전투)
 
-![perseus](/uploads/5e9f3b26b40078ddf00f9d621278b4dd/perseus.gif)
+![perseus](https://user-images.githubusercontent.com/70651931/209349267-92b96a04-7753-4bcd-ad0d-836f87a6a908.gif)
 
 - 페르세우스자리 - 미니게임(공포게임)
 
-![cassiopeia](/uploads/3e7385ab5bdeef97d93b477ff6dcc456/cassiopeia.gif)
+![cassiopeia](https://user-images.githubusercontent.com/70651931/209349283-5abdb8f0-0eb6-4e45-a0f5-8c5f623cc266.gif)
 
 - 카시오페이아자리 - 미니게임(미로)
 
-![lyra](/uploads/3865d2c12ae05752f82bba20cc2a42a1/lyra.gif)
+![lyra](https://user-images.githubusercontent.com/70651931/209349298-f2bd7021-4b99-4134-97a3-39561436bd4c.gif)
 
 - 거문고자리 - 미니게임(점프맵)
 
 ### 밤하늘 보기
 
-![1](/uploads/08afb07d1ef881dbe263498f394bdb7f/1.png)
+![1](https://user-images.githubusercontent.com/70651931/209349368-e667c977-b593-4c64-a343-de59f3c56a0b.png)
 
 - PC로 별 보기 / VR로 별 보기 - 2가지 모드로 플레이 가능
 
-![2](/uploads/ec7c0a8f6fca15f36c10fd579799abfd/2.png)
+![2](https://user-images.githubusercontent.com/70651931/209349374-7458a8d8-97b9-403a-b9e2-b13b7157aac7.png)
 
 - 튜토리얼 - (다운로드, 컨텐츠 소개, 조작 방법)에 관련된 정보를 사용자에게 제공)
 
-![firework](/uploads/680dfb739a465c0693b5449bfa004264/firework.gif)
+![firework](https://user-images.githubusercontent.com/70651931/209349405-fabf3dc7-8e4e-42c7-8660-4c5711619585.gif)
 
 - 불꽃 놀이
 
-![star-item](/uploads/75cc604a25e572a70e309a6fc5bbeda1/star-item.gif)
+![star-item](https://user-images.githubusercontent.com/70651931/209349431-facf4355-1991-4912-a629-c0daf22b9f3e.gif)
 
 - 스타(아이템) 획득을 통한 특수능력 부여
 
-![change-star](/uploads/445bd25a95da5dc82b703f77fd86d9a4/change-star.gif)
+![change-star](https://user-images.githubusercontent.com/70651931/209349447-462bbebb-958d-4f69-b72f-7969cc0a88e0.gif)
 
 ![selectCity](/uploads/8d2460f8c344393cf11e88f4a6f6f55e/selectCity.gif)
 
@@ -398,18 +398,18 @@ backend
 
 - 별자리 정보 ON/OFF
 
-![star-information](/uploads/c55f6dfa6b69417f825516f574022d7e/star-information.gif)
+![star-information](https://user-images.githubusercontent.com/70651931/209349493-618d014f-695d-4a83-8c28-3e60a8c4a9a1.gif)
 
 - 별을 클릭하여 별의 자세한 정보 확인
 
 ### 상점 가기
 
-![shop-buy](/uploads/2e0b7578f9a116e028b0f318c7652ddf/shop-buy.gif)
+![shop-buy](https://user-images.githubusercontent.com/70651931/209349523-9ef1a0f3-c423-4367-a3c4-4f5cdb035d3e.gif)
 
 - 신화 게임에서 얻은 재화로 방을 꾸밀 수 있는 아이템을 구매 가능
 
 ### 방 꾸미기
 
-![change-room](/uploads/e66653a25938956556985fe72789500b/change-room.gif)
+![change-room](https://user-images.githubusercontent.com/70651931/209349533-f9b394a6-6d0c-498d-8f8f-f49db5b9fdb0.gif)
 
 - 구매한 가구를 이용하여 자신의 다락방을 꾸밀 수 있습니다.
