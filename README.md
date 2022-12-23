@@ -1,6 +1,6 @@
 # **⭐ Starry Night : 멀기만 했던 별들과 가까워 지는 밤**
 
-![Logo](/uploads/af48a2b9e7a57bb61e8ab3d76f3dba4f/KakaoTalk_20221121_011112771.png)
+![Logo](https://user-images.githubusercontent.com/70651931/209348547-bf0c5c43-c65f-4ca5-8106-d189f4bf048b.png)
 
 ## **[Starry Night 링크](https://starry-night.kr/)**
 
