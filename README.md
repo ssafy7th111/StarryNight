@@ -1,6 +1,6 @@
 # **⭐ Starry Night : 멀기만 했던 별들과 가까워 지는 밤**
 
-![Logo](https://user-images.githubusercontent.com/70651931/209348547-bf0c5c43-c65f-4ca5-8106-d189f4bf048b.png)
+![Logo](https://user-images.githubusercontent.com/70651931/209348888-7636b176-4e0f-4da4-bbe0-c08a2ba86681.png)
 
 ## **[Starry Night 링크](https://starry-night.kr/)**
 
@@ -297,51 +297,50 @@ backend
 ## 🖥️ **서비스 화면**
 
 ### 메인페이지
+![mainpage](https://user-images.githubusercontent.com/70651931/209348893-6759e587-f9c9-4da7-8831-3a447455c7cf.png)
 
-![mainpage](/uploads/7cd68ded6bb71e450a40d0bb98f74336/mainpage.png)
+![mainpage2](https://user-images.githubusercontent.com/70651931/209348895-7af6d6f7-4629-40f7-94e9-914ba28af246.png)
 
-![mainpage2](/uploads/6d047ba95aeaadc900504cd816d66554/mainpage2.png)
+![mainpage3](https://user-images.githubusercontent.com/70651931/209348896-9490e7ec-5e1e-492e-b05d-ef2b648c8f0d.png)
 
-![mainpage3](/uploads/9054ad229e1386b4d841100c5d4817bd/mainpage3.png)
+![mainpage4](https://user-images.githubusercontent.com/70651931/209348897-c77f615b-1a2c-4b66-9879-55233046c4a9.png)
 
-![mainpage4](/uploads/a0fb4151d359aba30745d2033a093a9c/mainpage4.png)
+![mainpage5](https://user-images.githubusercontent.com/70651931/209348898-7cad7c62-4292-44f6-9e1d-80804a7490e5.png)
 
-![mainpage5](/uploads/3048a0a23ddff1dcf924085bc3097ad8/mainpage5.png)
-
-![mainpage6](/uploads/aab65e455a8d680581de420ee0d4a7b0/mainpage6.png)
+![mainpage6](https://user-images.githubusercontent.com/70651931/209348902-23758a7b-1ceb-4969-a391-71310c696d63.png)
 
 - Starry Night에서 제공하는 서비스들을 한눈에 볼 수 있습니다.
 
 ### 로그인
 
-![login](/uploads/b9b50f944c169c57ce7145990ce03ab0/login.png)
+![login](https://user-images.githubusercontent.com/70651931/209348891-97b6f54c-98b8-4f91-b8d2-ddaf06b103d7.png)
 
 - 카카오 & 구글 소셜 로그인을 제공
 
 ### 다락방
 
-![main-room](/uploads/27787d048081c06494a0d20eabd970b2/main-room.png)
+![main-room](https://user-images.githubusercontent.com/70651931/209348903-f848a3f7-d067-4ec8-ae78-0da15dae5a18.png)
 
 - 메인 서비스 3가지를 이용할 수 있음
     - **신화 게임**
     - **밤하늘 보기**
     - **방 꾸미기**
 
-![other-room](/uploads/246f2baaba301919102cc65b45f57d18/other-room.gif)
+![other-room](https://user-images.githubusercontent.com/70651931/209349037-5ad9917e-7915-421e-9f91-fc081edae91c.gif)
 
 - **유성 타기** - 다른 사용자들의 다락방을 구경할 수 있음
 
 ### 책 펼치기
 
-![book](/uploads/73ed08fcb0147b67b8096a8a4c4b85ab/book.png)
+![book](https://user-images.githubusercontent.com/70651931/209348872-64e6e0c9-4d7e-4a77-81c9-4d1cbb4394f9.png)
 
 - 책 펼치기 - 신화 게임들을 플레이할 수 있는 공간
 
-![readMyth](/uploads/668ecb96432467d6c06c221343846738/readMyth.png)
+![readMyth](https://user-images.githubusercontent.com/70651931/209349065-8837c636-fd8a-415e-946a-722810a102c6.png)
 
 - 신화 읽기 - 클리어한 신화 게임의 별자리에 대한 정보들을 제공
 
-![tutorial](/uploads/5c8839b9ed1bf1fbeeb6ed63181c4050/tutorial.png)
+![tutorial](https://user-images.githubusercontent.com/70651931/209349107-976046b4-2112-4a41-8164-17fb8d626295.png)
 
 - 튜토리얼 - 신화 게임의 조작법을 설명하는 게임 가이드
 
